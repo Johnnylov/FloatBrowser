@@ -1,0 +1,3 @@
+Microsoft.Windows.SDK.NET.Ref 10.0.19041.56
+Copyright Microsoft Corporation.
+License: https://aka.ms/WinSDKLicenseURL

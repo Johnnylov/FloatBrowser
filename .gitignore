@@ -1,0 +1,18 @@
+bin/
+obj/
+.vs/
+*.user
+publish/
+test-results/
+.idea/
+
+validation/
+*.log
+*_Log.txt
+*.pdb
+*.WebView2/
+EBWebView/
+WebView2/
+Cookies
+Cookies-journal
+Local State

@@ -1,0 +1,15 @@
+<!doctype html><html><meta charset="utf-8"><title>全屏播放器交互验证</title>
+<style>
+html,body{margin:0;background:white}#player{position:relative;width:100%;height:460px;background:#111;color:white}#player:fullscreen{width:100%;height:100%}
+video{width:100%;height:100%;object-fit:contain}#bar{position:absolute;bottom:0;left:0;right:0;height:64px;background:#263238;display:flex;align-items:center;gap:20px;padding:0 20px;visibility:hidden}#player.show #bar{visibility:visible}
+#seek{flex:1}button{padding:10px}#enter{position:absolute;top:10px;left:10px}
+</style><div id="player"><video id="movie" muted loop controls src="silence.wav"></video><button id="enter">全屏</button>
+<div id="bar"><button id="play">播放 / 暂停</button><input id="seek" type="range" min="0" max="100" value="10"><button id="exit">退出全屏</button></div></div>
+<script>
+const player=document.getElementById('player'),movie=document.getElementById('movie');
+let idle;player.addEventListener('mousemove',()=>{player.classList.add('show');clearTimeout(idle);idle=setTimeout(()=>player.classList.remove('show'),800)});
+document.getElementById('enter').onclick=()=>{window.enterClicked=true;player.requestFullscreen().catch(e=>window.fullscreenError=e.message)};
+document.getElementById('exit').onclick=()=>document.exitFullscreen();
+document.getElementById('play').onclick=()=>movie.paused?movie.play():movie.pause();
+window.seekEvents=0;document.getElementById('seek').addEventListener('input',e=>{if(e.isTrusted)seekEvents++});
+</script></html>
